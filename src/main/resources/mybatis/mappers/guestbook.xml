@@ -8,7 +8,7 @@
 	<select id="selectList"  resultType="com.javaex.vo.GuestbookVO">
 		<![CDATA[    
 			select 	no,
-					name,
+					user_name name,
 					password,
 			        content,
 			        reg_date as regDate
@@ -23,7 +23,7 @@
 	<insert id="insert" parameterType="com.javaex.vo.GuestbookVO">
 		<![CDATA[    
 			insert into guestbook
-			values(null, #{name}, #{password}, #{content}, now())
+			values(null, #{name}, #{password}, now(), #{content})
 		]]>
 	</insert>
 	
@@ -60,7 +60,7 @@
 	<select id="selectOne" parameterType="int" resultType="com.javaex.vo.GuestbookVO">
 		<![CDATA[ 
 			select 	no,
-					name,
+					user_name name,
 					content,
 			        reg_date regDate
 			from guestbook
