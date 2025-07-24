@@ -18,7 +18,17 @@ public class WebMvcConfig implements WebMvcConfigurer {
 //        }
 //        registry.addResourceHandler("/upload/**")
 //                .addResourceLocations(resourceLocation);
+    	
+    	String osName = System.getProperty("os.name").toLowerCase();
+    	String resourceLocation;
+    	
+    	if(osName.contains("win")) {
+    		resourceLocation = "file:///C:/javaStudy/upload/";
+    	} else {
+    		resourceLocation = "file:/data/upload/";
+    	}
+    	
     	registry.addResourceHandler("/upload/**")
-    	.addResourceLocations("file:/data/upload/");
+    	.addResourceLocations(resourceLocation);
     }
 }
